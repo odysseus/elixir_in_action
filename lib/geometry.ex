@@ -33,7 +33,7 @@ defmodule Geometry do
     """
     @spec rectangle(number) :: number
     def rectangle(side) do
-      square(a)
+      square(side)
     end
 
     @doc """
@@ -54,11 +54,8 @@ defmodule Geometry do
       Math.pi() * Math.pow(radius, 2)
     end
 
-    @doc """
-    Returns the number divided by two. Solely to demonstrate the definition
-    and use of a private function (defp) within a module
-    """
     @spec halve(number) :: number
+    # Divides a number by two. Private function
     defp halve(number) do
       number / 2
     end

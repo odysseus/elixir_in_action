@@ -1,9 +1,18 @@
 defmodule Calculator do
+  @moduledoc """
+  Implements a basic calculator that runs in its own process.
+  Does not use GenServer, demonstrates basic message passing.
+  """
 
+  @doc """
+  Spawns a calculator process and starts the serve loop
+  """
   def new() do
     spawn(&serve/0)
   end
 
+  # Infinite loop to serve requests. Stores state in the
+  # form of the current running calculation.
   defp serve(current_value \\ 0) do
     new_value = receive do
       {:value, caller} ->
@@ -31,12 +40,17 @@ defmodule Calculator do
     serve(new_value)
   end
 
+
+  # --- Math Functions ---
+
   def add(pid, n), do: send(pid, {:add, n})
   def sub(pid, n), do: send(pid, {:sub, n})
   def mul(pid, n), do: send(pid, {:mul, n})
   def div(pid, n), do: send(pid, {:div, n})
   def exp(pid, n), do: send(pid, {:exp, n})
   def reset(pid), do: send(pid, {:reset})
+
+  # --- Return Functions ---
 
   defp result(pid, type) when type in [:value, :round, :trunc] do
     send(pid, {type, self()})
@@ -53,6 +67,8 @@ defmodule Calculator do
 
 end
 
+# Example Usage
+
 # calc = Calculator.new()
 # send(calc, {:add, 3})
 # send(calc, {:mul, 2})
@@ -66,7 +82,6 @@ end
 # end
 
 # IO.puts(value)
-
 
 # Example using the interface methods (AKA: The right way)
 

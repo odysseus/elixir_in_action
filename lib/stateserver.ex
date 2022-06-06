@@ -1,4 +1,9 @@
 defmodule StateServer do
+  @moduledoc """
+  An experiment with stateful servers before I was introduced
+  to basically every single stateful server pattern used in
+  Elixir. Implements a stack.
+  """
 
   def new() do
     spawn(&serve/0)

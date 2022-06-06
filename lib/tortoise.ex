@@ -1,4 +1,8 @@
 defmodule Tortoise do
+  @moduledoc """
+  Another message-passing module that simulates slow calls by
+  passing an argument (in ms) and sleeping before returning
+  """
 
   def async_call(f, arg, sleepms) do
     long_call = fn fx, argx, sleep ->
@@ -74,7 +78,7 @@ end
 # Enum.map(1..100, &Tortoise.async_return({:ok, &1}, 2000))
 # Tortoise.server_loop()
 
-fizzbuzz = &Tortoise.fizzbuzzzap(&1)
-Enum.map(1..1000, &Tortoise.async_call(fizzbuzz, &1, 2000))
+# fizzbuzz = &Tortoise.fizzbuzzzap(&1)
+# Enum.map(1..1000, &Tortoise.async_call(fizzbuzz, &1, 2000))
 
-Tortoise.fbz_server()
+# Tortoise.fbz_server()

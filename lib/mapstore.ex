@@ -1,4 +1,7 @@
 defmodule MapStore do
+  @moduledoc """
+  Stateful server using GenServer. Implements a basic map.
+  """
   use GenServer
 
   @impl GenServer

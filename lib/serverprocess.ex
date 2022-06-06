@@ -1,4 +1,8 @@
 defmodule ServerProcess do
+  @moduledoc """
+  A stateful server process that does not use GenServer,
+  rather it implements a GenServer-like construct itself.
+  """
   def start(callback_module) do
     spawn(fn ->
       initial_state = callback_module.init()

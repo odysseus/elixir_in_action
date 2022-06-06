@@ -1,3 +1,6 @@
+# An assortment of examples for pattern matching, recursion,
+# guard statements, and other nice functional patterns.
+
 defmodule Order do
   @current_year :calendar.local_time |> elem(0) |> elem(0)
 

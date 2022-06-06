@@ -1,5 +1,10 @@
 
 defmodule Fraction do
+  @moduledoc """
+  Basic fraction module that demonstrates defining and using
+  structs.
+  """
+
   defstruct num: nil, den: nil
 
   def new(a, b), do: %Fraction{num: a, den: b}
